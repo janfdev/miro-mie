@@ -1,42 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════
-   MIRO MIE — Design System
+   MIRO MIE — Design System v2
+   Inspired by: Sweetgreen, Ichiran, Honey & Co
+   Palette: Stone warm + Red-700 accent
    ═══════════════════════════════════════════════ */
 
 @theme {
-  /* Colors — Warm & Appetizing */
-  --color-primary: #D97706;
-  --color-primary-light: #F59E0B;
-  --color-primary-dark: #B45309;
-  --color-secondary: #DC2626;
-  --color-secondary-light: #EF4444;
-  --color-accent: #059669;
-  --color-accent-light: #10B981;
-  --color-warm-white: #FFFBEB;
-  --color-warm-cream: #FEF3C7;
-  --color-dark: #1C1917;
-  --color-dark-soft: #292524;
-  --color-text: #1C1917;
-  --color-text-muted: #78716C;
-  --color-text-light: #A8A29E;
+  --color-stone-50: #FAFAF9;
+  --color-stone-100: #F5F5F4;
+  --color-stone-200: #E7E5E4;
+  --color-stone-300: #D6D3D1;
+  --color-stone-400: #A8A29E;
+  --color-stone-500: #78716C;
+  --color-stone-600: #57534E;
+  --color-stone-700: #44403C;
+  --color-stone-800: #292524;
+  --color-stone-900: #1C1917;
+  --color-stone-950: #0C0A09;
 
-  /* Typography */
-  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --color-red-600: #DC2626;
+  --color-red-700: #B91C1C;
+  --color-red-800: #991B1B;
+
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+
+  --color-amber-500: #F59E0B;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
-
-  /* Spacing */
-  --spacing-section: 5rem;
-  --spacing-section-sm: 3rem;
-
-  /* Radius */
-  --radius-card: 1rem;
-  --radius-button: 0.75rem;
-  --radius-full: 9999px;
 }
 
-/* Base */
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
@@ -44,42 +40,62 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-text);
-  background: var(--color-warm-white);
+  color: var(--color-stone-900);
+  background: var(--color-stone-50);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-}
-
-/* Smooth section scroll */
-section {
-  scroll-margin-top: 4rem;
-}
-
-/* Selection color */
 ::selection {
-  background: var(--color-primary-light);
+  background: var(--color-red-700);
   color: white;
 }
 
-/* Focus outline */
 *:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-red-700);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Animate on scroll utility */
+/* ─── Scroll Reveal Animation ─── */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ─── Stagger Delay Utility ─── */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* ─── Swiper Custom Styles ─── */
+.swiper-pagination-bullet {
+  background: rgba(255,255,255,0.5) !important;
+  opacity: 1 !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+.swiper-pagination-bullet-active {
+  background: white !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important;
+  width: 44px !important;
+  height: 44px !important;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px !important;
+  font-weight: 600;
 }

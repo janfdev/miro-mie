@@ -1,0 +1,15 @@
+---
+// Lucide SVG icons as Astro components
+// Usage: import { IconPhone } from './Icons.astro';
+
+interface Props {
+  class?: string;
+  size?: number;
+}
+
+const { class: className = '', size = 24 } = Astro.props;
+---
+
+<!-- Re-export individual icons -->
+<!-- We use inline SVG from Lucide (https://lucide.dev) -->
+<!-- All icons are 24x24 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" -->

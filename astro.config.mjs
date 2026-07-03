@@ -6,9 +6,13 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   site: 'https://miromie.pages.dev',
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  build: {
+    format: 'file'
+  }
 });

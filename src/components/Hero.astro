@@ -1,101 +1,100 @@
 ---
 import { siteConfig } from '../data/site';
+
+const slides = [
+  {
+    image: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=1400&q=80&auto=format',
+    title: 'Mie Yamin Legendaris',
+    subtitle: 'Racikan bumbu manis gurih khas, sejak ' + siteConfig.year,
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=1400&q=80&auto=format',
+    title: 'Baso Sapi Pilihan',
+    subtitle: 'Daging sapi segar, kenyal, dan gurih',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=1400&q=80&auto=format',
+    title: 'Es Teler Segar',
+    subtitle: 'Campuran alpukat, kelapa muda, dan nangka',
+  },
+];
 ---
 
-<section id="beranda" class="relative min-h-screen flex items-center overflow-hidden">
-  <!-- Background Pattern -->
-  <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-warm-cream)] via-[var(--color-warm-white)] to-orange-50"></div>
-  <div class="absolute top-20 right-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-20 left-10 w-96 h-96 bg-[var(--color-secondary)]/5 rounded-full blur-3xl"></div>
-
-  <!-- Decorative Emoji -->
-  <div class="absolute top-32 right-[15%] text-6xl opacity-10 animate-bounce" style="animation-duration: 3s;">🍜</div>
-  <div class="absolute bottom-32 left-[10%] text-5xl opacity-10 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">🍲</div>
-  <div class="absolute top-[40%] right-[8%] text-4xl opacity-10 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">🧊</div>
-
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Text -->
-      <div class="text-center lg:text-left">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full text-sm font-semibold mb-6">
-          <span class="w-2 h-2 bg-[var(--color-accent)] rounded-full animate-pulse"></span>
-          Buka Setiap Hari · {siteConfig.hours.split(': ')[1]}
-        </div>
-
-        <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight text-[var(--color-dark)] mb-6">
-          Mie Yamin & Baso
-          <span class="block text-[var(--color-primary)]">Legendaris</span>
-        </h1>
-
-        <p class="text-lg sm:text-xl text-[var(--color-text-muted)] mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-          {siteConfig.description}
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <a
-            href="#produk"
-            class="px-8 py-4 bg-[var(--color-primary)] text-white rounded-[var(--radius-button)] font-bold text-lg hover:bg-[var(--color-primary-dark)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-center"
-          >
-            🍜 Lihat Menu Kami
-          </a>
-          <a
-            href={`https://wa.me/${siteConfig.whatsapp}?text=Halo%20Miro%20Mie!%20Saya%20mau%20pesan%20mie%20yamin.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-8 py-4 bg-white text-[var(--color-dark)] rounded-[var(--radius-button)] font-bold text-lg hover:bg-[var(--color-warm-cream)] transition-all border-2 border-[var(--color-warm-cream)] shadow-md hover:shadow-lg hover:-translate-y-0.5 text-center"
-          >
-            📱 Pesan via WhatsApp
-          </a>
-        </div>
-
-        <!-- Stats -->
-        <div class="flex items-center gap-8 mt-10 justify-center lg:justify-start">
-          <div class="text-center">
-            <div class="font-heading font-extrabold text-2xl text-[var(--color-primary)]">4+</div>
-            <div class="text-xs text-[var(--color-text-muted)]">Menu Favorit</div>
+<section id="beranda" class="relative">
+  <!-- Swiper Hero Carousel -->
+  <div class="swiper hero-swiper h-[85vh] sm:h-screen">
+    <div class="swiper-wrapper">
+      {slides.map((slide) => (
+        <div class="swiper-slide relative">
+          <!-- Background Image -->
+          <div class="absolute inset-0">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/30 to-stone-950/10"></div>
           </div>
-          <div class="w-px h-10 bg-[var(--color-text-light)]"></div>
-          <div class="text-center">
-            <div class="font-heading font-extrabold text-2xl text-[var(--color-primary)]">{new Date().getFullYear() - parseInt(siteConfig.year)}+</div>
-            <div class="text-xs text-[var(--color-text-muted)]">Tahun Pengalaman</div>
-          </div>
-          <div class="w-px h-10 bg-[var(--color-text-light)]"></div>
-          <div class="text-center">
-            <div class="font-heading font-extrabold text-2xl text-[var(--color-primary)]">1000+</div>
-            <div class="text-xs text-[var(--color-text-muted)]">Pelanggan Puas</div>
+
+          <!-- Content -->
+          <div class="relative z-10 flex flex-col justify-end h-full max-w-6xl mx-auto px-6 pb-24 sm:pb-32">
+            <span class="inline-flex items-center gap-2 w-fit px-3 py-1.5 bg-white/10 backdrop-blur-sm text-white/90 rounded-full text-xs font-medium mb-5 border border-white/10">
+              <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+              Buka Setiap Hari &middot; 09.00 &ndash; 21.00
+            </span>
+
+            <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-4 leading-[1.1] tracking-tight">
+              {slide.title}
+            </h1>
+
+            <p class="text-white/70 text-lg mb-8 max-w-lg">
+              {slide.subtitle}
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href={`https://wa.me/${siteConfig.whatsapp}?text=Halo%20Miro%20Mie!%20Saya%20mau%20pesan.`}
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-stone-900 rounded-lg font-semibold text-sm hover:bg-stone-100 transition-colors w-fit"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Pesan via WhatsApp
+              </a>
+              <a href="#produk" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium text-sm border border-white/15 hover:bg-white/20 transition-colors w-fit">
+                Lihat Menu
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Hero Visual -->
-      <div class="hidden lg:flex justify-center">
-        <div class="relative">
-          <!-- Main Bowl -->
-          <div class="w-80 h-80 bg-gradient-to-br from-[var(--color-primary-light)] to-[var(--color-primary)] rounded-full flex items-center justify-center shadow-2xl">
-            <span class="text-[120px]">🍜</span>
-          </div>
-          <!-- Floating Items -->
-          <div class="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-4xl animate-bounce" style="animation-duration: 2s;">
-            🥟
-          </div>
-          <div class="absolute -bottom-2 -left-6 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-4xl animate-bounce" style="animation-duration: 2.5s; animation-delay: 0.5s;">
-            🧊
-          </div>
-          <div class="absolute top-1/2 -right-10 w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center text-3xl animate-bounce" style="animation-duration: 3s; animation-delay: 1s;">
-            🌶️
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
-  </div>
 
-  <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--color-text-light)]">
-    <span class="text-xs font-medium">Scroll</span>
-    <div class="w-5 h-8 border-2 border-[var(--color-text-light)] rounded-full flex justify-center pt-1.5">
-      <div class="w-1 h-2 bg-[var(--color-text-light)] rounded-full animate-bounce"></div>
-    </div>
+    <!-- Pagination + Navigation -->
+    <div class="swiper-pagination !bottom-8 sm:!bottom-12"></div>
+    <div class="swiper-button-prev !left-4 sm:!left-8 !w-10 !h-10 bg-white/10 backdrop-blur-sm rounded-full !border !border-white/15 after:!text-sm"></div>
+    <div class="swiper-button-next !right-4 sm:!right-8 !w-10 !h-10 bg-white/10 backdrop-blur-sm rounded-full !border !border-white/15 after:!text-sm"></div>
   </div>
 </section>
+
+<!-- Import Swiper JS -->
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-fade';
+  import 'swiper/css/pagination';
+  import 'swiper/css/navigation';
+
+  new Swiper('.hero-swiper', {
+    modules: [Autoplay, EffectFade, Pagination, Navigation],
+    loop: true,
+    speed: 1000,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  });
+</script>
