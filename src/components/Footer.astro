@@ -1,0 +1,70 @@
+---
+import { siteConfig } from '../data/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[var(--color-dark)] text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+      <!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-2xl">🍜</span>
+          <span class="font-heading font-extrabold text-xl">{siteConfig.name}</span>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          {siteConfig.description}
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-[var(--color-primary-light)]">
+          Navigasi
+        </h4>
+        <ul class="space-y-2">
+          <li><a href="#beranda" class="text-sm text-gray-400 hover:text-white transition-colors">Beranda</a></li>
+          <li><a href="#tentang" class="text-sm text-gray-400 hover:text-white transition-colors">Tentang</a></li>
+          <li><a href="#produk" class="text-sm text-gray-400 hover:text-white transition-colors">Produk</a></li>
+          <li><a href="#testimoni" class="text-sm text-gray-400 hover:text-white transition-colors">Testimoni</a></li>
+          <li><a href="#kontak" class="text-sm text-gray-400 hover:text-white transition-colors">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-[var(--color-primary-light)]">
+          Kontak
+        </h4>
+        <ul class="space-y-2">
+          <li class="text-sm text-gray-400">📍 {siteConfig.address}</li>
+          <li class="text-sm text-gray-400">📱 {siteConfig.phone}</li>
+          <li class="text-sm text-gray-400">🕐 {siteConfig.hours}</li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div>
+        <h4 class="font-heading font-bold text-sm uppercase tracking-wider mb-4 text-[var(--color-primary-light)]">
+          Sosial Media
+        </h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">📸 {siteConfig.instagram}</a></li>
+          <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">🎵 {siteConfig.tiktok}</a></li>
+          <li><a href="#" class="text-sm text-gray-400 hover:text-white transition-colors">📘 {siteConfig.facebook}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-500">
+        © {currentYear} {siteConfig.name}. All rights reserved.
+      </p>
+      <p class="text-xs text-gray-600">
+        Dibuat dengan ❤️ untuk UMKM Indonesia
+      </p>
+    </div>
+  </div>
+</footer>

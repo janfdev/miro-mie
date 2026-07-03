@@ -1,0 +1,132 @@
+---
+import { siteConfig } from '../data/site';
+
+const navLinks = [
+  { label: 'Beranda', href: '#beranda' },
+  { label: 'Tentang', href: '#tentang' },
+  { label: 'Produk', href: '#produk' },
+  { label: 'Testimoni', href: '#testimoni' },
+  { label: 'Kontak', href: '#kontak' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/0 backdrop-blur-none">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <!-- Logo -->
+      <a href="#beranda" class="flex items-center gap-2 group">
+        <span class="text-2xl">🍜</span>
+        <span class="font-heading font-extrabold text-xl sm:text-2xl text-[var(--color-dark)] group-hover:text-[var(--color-primary)] transition-colors">
+          {siteConfig.name}
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="px-4 py-2 rounded-lg text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-warm-cream)] transition-all"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp}?text=Halo%20Miro%20Mie!%20Saya%20mau%20tanya-tanya.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-3 px-5 py-2.5 bg-[var(--color-primary)] text-white rounded-[var(--radius-button)] font-semibold text-sm hover:bg-[var(--color-primary-dark)] transition-colors shadow-md hover:shadow-lg"
+        >
+          📱 Pesan Sekarang
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-[var(--color-warm-cream)] transition-colors"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="hamburger-line w-6 h-0.5 bg-[var(--color-dark)] rounded-full transition-all"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-[var(--color-dark)] rounded-full transition-all"></span>
+        <span class="hamburger-line w-4 h-0.5 bg-[var(--color-dark)] rounded-full transition-all"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden pb-4">
+      <div class="flex flex-col gap-1 bg-white rounded-2xl p-3 shadow-xl border border-[var(--color-warm-cream)]">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-link px-4 py-3 rounded-xl text-base font-medium text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-warm-cream)] transition-all"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={`https://wa.me/${siteConfig.whatsapp}?text=Halo%20Miro%20Mie!%20Saya%20mau%20pesan.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 px-5 py-3 bg-[var(--color-primary)] text-white rounded-xl font-semibold text-center hover:bg-[var(--color-primary-dark)] transition-colors"
+        >
+          📱 Pesan via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Navbar scroll effect */
+  #navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Hamburger animation */
+  .menu-open .hamburger-line:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+    width: 1.5rem;
+  }
+  .menu-open .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-open .hamburger-line:nth-child(3) {
+    transform: translateY(-4px) rotate(-45deg);
+    width: 1.5rem;
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu toggle
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.classList.toggle('menu-open', isOpen);
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuToggle?.classList.remove('menu-open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

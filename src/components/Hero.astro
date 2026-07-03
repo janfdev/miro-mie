@@ -1,0 +1,101 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<section id="beranda" class="relative min-h-screen flex items-center overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-warm-cream)] via-[var(--color-warm-white)] to-orange-50"></div>
+  <div class="absolute top-20 right-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-[var(--color-secondary)]/5 rounded-full blur-3xl"></div>
+
+  <!-- Decorative Emoji -->
+  <div class="absolute top-32 right-[15%] text-6xl opacity-10 animate-bounce" style="animation-duration: 3s;">🍜</div>
+  <div class="absolute bottom-32 left-[10%] text-5xl opacity-10 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">🍲</div>
+  <div class="absolute top-[40%] right-[8%] text-4xl opacity-10 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">🧊</div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Text -->
+      <div class="text-center lg:text-left">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full text-sm font-semibold mb-6">
+          <span class="w-2 h-2 bg-[var(--color-accent)] rounded-full animate-pulse"></span>
+          Buka Setiap Hari · {siteConfig.hours.split(': ')[1]}
+        </div>
+
+        <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight text-[var(--color-dark)] mb-6">
+          Mie Yamin & Baso
+          <span class="block text-[var(--color-primary)]">Legendaris</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-[var(--color-text-muted)] mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          {siteConfig.description}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href="#produk"
+            class="px-8 py-4 bg-[var(--color-primary)] text-white rounded-[var(--radius-button)] font-bold text-lg hover:bg-[var(--color-primary-dark)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-center"
+          >
+            🍜 Lihat Menu Kami
+          </a>
+          <a
+            href={`https://wa.me/${siteConfig.whatsapp}?text=Halo%20Miro%20Mie!%20Saya%20mau%20pesan%20mie%20yamin.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 bg-white text-[var(--color-dark)] rounded-[var(--radius-button)] font-bold text-lg hover:bg-[var(--color-warm-cream)] transition-all border-2 border-[var(--color-warm-cream)] shadow-md hover:shadow-lg hover:-translate-y-0.5 text-center"
+          >
+            📱 Pesan via WhatsApp
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex items-center gap-8 mt-10 justify-center lg:justify-start">
+          <div class="text-center">
+            <div class="font-heading font-extrabold text-2xl text-[var(--color-primary)]">4+</div>
+            <div class="text-xs text-[var(--color-text-muted)]">Menu Favorit</div>
+          </div>
+          <div class="w-px h-10 bg-[var(--color-text-light)]"></div>
+          <div class="text-center">
+            <div class="font-heading font-extrabold text-2xl text-[var(--color-primary)]">{new Date().getFullYear() - parseInt(siteConfig.year)}+</div>
+            <div class="text-xs text-[var(--color-text-muted)]">Tahun Pengalaman</div>
+          </div>
+          <div class="w-px h-10 bg-[var(--color-text-light)]"></div>
+          <div class="text-center">
+            <div class="font-heading font-extrabold text-2xl text-[var(--color-primary)]">1000+</div>
+            <div class="text-xs text-[var(--color-text-muted)]">Pelanggan Puas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hidden lg:flex justify-center">
+        <div class="relative">
+          <!-- Main Bowl -->
+          <div class="w-80 h-80 bg-gradient-to-br from-[var(--color-primary-light)] to-[var(--color-primary)] rounded-full flex items-center justify-center shadow-2xl">
+            <span class="text-[120px]">🍜</span>
+          </div>
+          <!-- Floating Items -->
+          <div class="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-4xl animate-bounce" style="animation-duration: 2s;">
+            🥟
+          </div>
+          <div class="absolute -bottom-2 -left-6 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center text-4xl animate-bounce" style="animation-duration: 2.5s; animation-delay: 0.5s;">
+            🧊
+          </div>
+          <div class="absolute top-1/2 -right-10 w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center text-3xl animate-bounce" style="animation-duration: 3s; animation-delay: 1s;">
+            🌶️
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--color-text-light)]">
+    <span class="text-xs font-medium">Scroll</span>
+    <div class="w-5 h-8 border-2 border-[var(--color-text-light)] rounded-full flex justify-center pt-1.5">
+      <div class="w-1 h-2 bg-[var(--color-text-light)] rounded-full animate-bounce"></div>
+    </div>
+  </div>
+</section>
