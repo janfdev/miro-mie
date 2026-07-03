@@ -76,26 +76,81 @@ body {
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 
-/* ─── Swiper Custom Styles ─── */
+/* ─── Swiper Pagination ─── */
+.swiper-pagination {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px !important;
+}
+
 .swiper-pagination-bullet {
-  background: rgba(255,255,255,0.5) !important;
-  opacity: 1 !important;
   width: 8px !important;
   height: 8px !important;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  opacity: 1 !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
+
+.swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
 .swiper-pagination-bullet-active {
+  width: 28px !important;
+  height: 8px !important;
+  border-radius: 9999px !important;
   background: white !important;
-  width: 24px !important;
-  border-radius: 4px !important;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
+
+/* ─── Swiper Navigation Arrows ─── */
 .swiper-button-prev,
 .swiper-button-next {
+  width: 48px !important;
+  height: 48px !important;
+  margin-top: -24px !important;
   color: white !important;
-  width: 44px !important;
-  height: 44px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  transition: all 0.2s ease !important;
 }
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.05);
+}
+
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  transform: scale(0.95);
+}
+
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  font-size: 18px !important;
-  font-weight: 600;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Button System (Shadcn-inspired) ─── */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 w-fit px-6 py-3 bg-white text-stone-900 rounded-lg text-sm font-semibold;
+  @apply shadow-sm hover:bg-stone-100 active:bg-stone-200 active:scale-[0.97];
+  @apply transition-all duration-150 ease-out;
+  @apply focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-stone-900;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 w-fit px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg text-sm font-medium;
+  @apply border border-white/15;
+  @apply hover:bg-white/20 active:bg-white/25 active:scale-[0.97];
+  @apply transition-all duration-150 ease-out;
+  @apply focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-stone-900;
 }

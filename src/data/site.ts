@@ -12,9 +12,11 @@ export interface MenuItem {
 export interface Testimonial {
   name: string;
   initial: string;
+  avatar: string;
   rating: number;
   text: string;
   date: string;
+  role?: string;
 }
 
 export const menuItems: MenuItem[] = [
@@ -61,30 +63,38 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Andi S.',
     initial: 'A',
+    avatar: 'https://ui-avatars.com/api/?name=Andi+S&size=96&background=E7E5E4&color=44403C&bold=true&format=svg',
     rating: 5,
     text: 'Mie yaminnya juara! Bumbu khasnya beda dari tempat lain. Sudah langganan sejak 2023. Porsinya pas, harganya juga ramah di kantong.',
     date: '2 minggu lalu',
+    role: 'Pelanggan Setia',
   },
   {
     name: 'Rina W.',
     initial: 'R',
+    avatar: 'https://ui-avatars.com/api/?name=Rina+W&size=96&background=E7E5E4&color=44403C&bold=true&format=svg',
     rating: 5,
     text: 'Baso sapi di sini beneran daging asli, bukan baso tepung! Kuahnya gurih banget. Wajib coba kalau ke daerah sini.',
     date: '1 bulan lalu',
+    role: 'Food Blogger',
   },
   {
     name: 'Budi P.',
     initial: 'B',
+    avatar: 'https://ui-avatars.com/api/?name=Budi+P&size=96&background=E7E5E4&color=44403C&bold=true&format=svg',
     rating: 5,
     text: 'Es teler-nya segar banget, porsi buahnya banyak! Cocok buat temen makan siang. Tempatnya juga bersih dan nyaman.',
     date: '3 minggu lalu',
+    role: 'Warga Lokal',
   },
   {
     name: 'Sari D.',
     initial: 'S',
+    avatar: 'https://ui-avatars.com/api/?name=Sari+D&size=96&background=E7E5E4&color=44403C&bold=true&format=svg',
     rating: 5,
-    text: 'Mie ayam favorit keluarga! Anak-anak suka banget. Pelayanannya cepat dan ramah. Recommended! ⭐⭐⭐⭐⭐',
+    text: 'Mie ayam favorit keluarga! Anak-anak suka banget. Pelayanannya cepat dan ramah. Recommended!',
     date: '1 minggu lalu',
+    role: 'Ibu Rumah Tangga',
   },
 ];
 
