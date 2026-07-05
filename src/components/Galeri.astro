@@ -1,11 +1,11 @@
 ---
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80', alt: 'Suasana dapur MIRO', size: 'large' },
-  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80', alt: 'Mie Yamin MIRO', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=500&q=80', alt: 'Mie Ayam MIRO', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=500&q=80', alt: 'Bakso MIRO', size: 'small' },
-  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=700&q=80', alt: 'Suasana kedai', size: 'large' },
-  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=500&q=80', alt: 'Es Teler MIRO', size: 'small' },
+  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80', alt: 'Suasana dapur MIRO' },
+  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80', alt: 'Mie Yamin MIRO' },
+  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=500&q=80', alt: 'Mie Ayam MIRO' },
+  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=500&q=80', alt: 'Bakso MIRO' },
+  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=700&q=80', alt: 'Suasana kedai' },
+  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=500&q=80', alt: 'Es Teler MIRO' },
 ];
 ---
 
@@ -18,21 +18,102 @@ const photos = [
     </div>
 
     <!-- Bento Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[180px] md:auto-rows-[200px]">
+    <div class="bento-grid">
       {photos.map((p, i) => (
-        <div class={`overflow-hidden rounded-[20px] group cursor-pointer ${
-          p.size === 'large'
-            ? (i === 0 ? 'col-span-2 row-span-2' : 'col-span-2 row-span-2')
-            : 'col-span-1 row-span-1'
-        }`}>
-          <img
-            src={p.src}
-            alt={p.alt}
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            loading="lazy"
-          />
+        <div class={`bento-item bento-${i + 1}`}>
+          <img src={p.src} alt={p.alt} class="w-full h-full object-cover" loading="lazy" />
         </div>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .bento-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 180px);
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 200px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      grid-template-rows: repeat(3, 220px);
+    }
+  }
+
+  .bento-item {
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .bento-item img {
+    transition: transform 0.7s ease;
+  }
+
+  .bento-item:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Item 1: top-left large (2x2) */
+  .bento-1 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  /* Item 2: top-right small */
+  .bento-2 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Item 3: mid-right small */
+  .bento-3 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Item 4: bottom-left small */
+  .bento-4 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Item 5: bottom-center large (2x1) */
+  .bento-5 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  /* Item 6: bottom-right small */
+  .bento-6 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Mobile: all single column, stack vertically */
+  @media (max-width: 767px) {
+    .bento-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px 180px 180px 180px;
+    }
+
+    .bento-1 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .bento-5 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+  }
+</style>
