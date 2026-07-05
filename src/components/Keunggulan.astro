@@ -1,92 +1,32 @@
 ---
 const features = [
-  {
-    icon: 'fresh',
-    title: 'Fresh Setiap Hari',
-    desc: 'Mie dibuat fresh setiap pagi, bukan mie kemasan. Bahan baku dipilih langsung dari supplier terpercaya.',
-  },
-  {
-    icon: 'recipe',
-    title: 'Resep Turun-Temurun',
-    desc: 'Rahasia bumbu khas MIRO yang sudah dijaga selama 3 generasi. Autentik dan tak bisa ditiru.',
-  },
-  {
-    icon: 'portion',
-    title: 'Porsi Jumbo',
-    desc: 'Porsi melimpah dengan topping berlimpah. Dijamin kenyang dan puas!',
-  },
-  {
-    icon: 'price',
-    title: 'Harga Bersahabat',
-    desc: 'Kualitas premium, harga terjangkau. Mulai dari Rp15.000 per porsi.',
-  },
-  {
-    icon: 'hygiene',
-    title: 'Higienis & Bersih',
-    desc: 'Dapur terbuka yang bisa Anda lihat langsung. Kebersihan adalah prioritas utama kami.',
-  },
-  {
-    icon: 'location',
-    title: 'Lokasi Strategis',
-    desc: 'Berada di pusat kota, mudah dijangkau dengan kendaraan umum maupun pribadi.',
-  },
+  { icon: 'clock', title: 'Rasa Konsisten', desc: 'Setiap sajian dijaga kualitasnya agar cita rasa selalu sama.' },
+  { icon: 'tag', title: 'Harga Terjangkau', desc: 'Harga bersahabat untuk semua kalangan tanpa mengorbankan kualitas.' },
+  { icon: 'leaf', title: 'Bahan Segar Setiap Hari', desc: 'Bahan pilihan diproses segar setiap hari untuk menjaga kesehatan.' },
+  { icon: 'smile', title: 'Pelayanan Cepat & Ramah', desc: 'Siap melayani pelanggan dengan senyum dan kecepatan prima.' },
 ];
 ---
 
 <section class="bg-white py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="text-center mb-14">
-      <span class="text-xs font-bold uppercase tracking-widest text-[#F2711C] mb-4 block">Keunggulan</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C15] mb-4">
-        Kenapa Memilih MIRO?
+      <span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">Keunggulan Kami</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-ink" style="font-family: var(--font-heading)">
+        Kenapa Memilih <span class="text-primary">MIRO</span>?
       </h2>
-      <p class="text-[#6B6157] max-w-lg mx-auto">
-        Bukan sekadar mie biasa — MIRO hadir dengan standar kualitas yang berbeda.
-      </p>
     </div>
 
-    <!-- Feature Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
       {features.map(f => (
-        <div class="flex items-start gap-4 p-6 bg-[#FFF8F0] rounded-2xl hover:shadow-md transition-all duration-300">
-          <div class="w-12 h-12 bg-[#FDE8D8] rounded-xl flex items-center justify-center flex-shrink-0">
-            {f.icon === 'fresh' && (
-              <svg class="w-6 h-6 text-[#F2711C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-              </svg>
-            )}
-            {f.icon === 'recipe' && (
-              <svg class="w-6 h-6 text-[#F2711C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            )}
-            {f.icon === 'portion' && (
-              <svg class="w-6 h-6 text-[#F2711C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
-              </svg>
-            )}
-            {f.icon === 'price' && (
-              <svg class="w-6 h-6 text-[#F2711C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            )}
-            {f.icon === 'hygiene' && (
-              <svg class="w-6 h-6 text-[#F2711C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            )}
-            {f.icon === 'location' && (
-              <svg class="w-6 h-6 text-[#F2711C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            )}
+        <div class="text-center group">
+          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary transition-colors">
+            {f.icon === 'clock' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+            {f.icon === 'tag' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>}
+            {f.icon === 'leaf' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>}
+            {f.icon === 'smile' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
           </div>
-          <div>
-            <h3 class="text-lg font-bold text-[#241C15] mb-1">{f.title}</h3>
-            <p class="text-sm text-[#6B6157] leading-relaxed">{f.desc}</p>
-          </div>
+          <h3 class="text-base font-bold text-ink mb-2">{f.title}</h3>
+          <p class="text-sm text-ink-body">{f.desc}</p>
         </div>
       ))}
     </div>

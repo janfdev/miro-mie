@@ -1,0 +1,113 @@
+---
+const menuItems = [
+  {
+    num: '01',
+    tag: 'Menu Andalan',
+    name: 'Mie Yamin',
+    desc: 'Mie kenyal dengan bumbu yamin khas, dipadukan ayam cincang gurih, sawi segar, dan taburan bawang renyah. Disajikan bersama kuah hangat berisi pangsit dan bakso untuk melengkapi setiap suapan.',
+    checks: ['Mie Homemade', 'Ayam Cincang Melimpah', 'Kuah Pangsit dan Bakso'],
+    price: 'Mulai Rp 15.000',
+    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80',
+    side: 'left',
+  },
+  {
+    num: '02',
+    tag: 'Best Seller',
+    name: 'Mie Ayam',
+    desc: 'Nikmati kelezatan mie ayam khas dengan potongan ayam berbumbu yang empuk dan kaya rasa. Dipadukan mie kenyal serta sayuran segar untuk menciptakan hidangan yang memuaskan setiap kali disantap.',
+    checks: ['Bumbu Khas Rumahan', 'Ayam Kecap Empuk', 'Sayuran Segar'],
+    price: 'Rp 10.000',
+    image: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80',
+    side: 'right',
+  },
+  {
+    num: '03',
+    tag: 'Favorit Keluarga',
+    name: 'Bakso Spesial',
+    desc: 'Semangkuk bakso hangat dengan tekstur yang kenyal dan kuah kaldu yang gurih meresap. Disajikan dengan pelengkap pilihan untuk menghadirkan cita rasa yang selalu dirindukan.',
+    checks: ['Bakso Pilihan', 'Kuah Gurih Hangat', 'Rasa Autentik'],
+    price: 'Rp 10.000',
+    image: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80',
+    side: 'left',
+  },
+  {
+    num: '04',
+    tag: 'Penutup Segar',
+    name: 'Es Teler',
+    desc: 'Perpaduan alpukat lembut, kelapa muda, nangka, dan sirup santan gula merah yang menyegarkan. Penutup sempurna setelah menyantap semangkuk mie.',
+    checks: ['Alpukat Segar', 'Kelapa Muda', 'Santan Gula Merah'],
+    price: 'Rp 10.000',
+    image: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80',
+    side: 'right',
+  },
+];
+---
+
+<section id="menu" class="bg-cream-soft py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">Menu Unggulan</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-ink mb-4" style="font-family: var(--font-heading)">
+        Setiap Sajian, <span class="text-primary">Sebuah Cerita</span>
+      </h2>
+      <p class="text-ink-body max-w-lg mx-auto">
+        Bukan sekadar menu — tiap hidangan diracik untuk momen yang layak dikenang.
+      </p>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="space-y-16 lg:space-y-24">
+      {menuItems.map(item => (
+        <div class={`grid lg:grid-cols-2 gap-10 items-center ${item.side === 'right' ? 'lg:direction-rtl' : ''}`}>
+          <!-- Image -->
+          <div class={`relative ${item.side === 'right' ? 'lg:order-2 lg:direction-ltr' : 'lg:direction-ltr'}`}>
+            <div class="rounded-[28px] overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.name}
+                class="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+            </div>
+            <!-- Price badge -->
+            <div class="absolute bottom-4 left-4 bg-white/95 rounded-full px-4 py-1.5 text-sm font-bold text-ink shadow-[0_10px_30px_-10px_rgba(36,28,21,0.12)]">
+              {item.price}
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class={item.side === 'right' ? 'lg:order-1 lg:direction-ltr' : 'lg:direction-ltr'}>
+            <span class="text-xs font-bold text-primary uppercase tracking-wider mb-3 block">
+              {item.num} · {item.tag}
+            </span>
+            <h3 class="text-2xl lg:text-3xl font-extrabold text-ink mb-4" style="font-family: var(--font-heading)">
+              {item.name}
+            </h3>
+            <p class="text-ink-body leading-relaxed mb-5">
+              {item.desc}
+            </p>
+
+            <!-- Checklist -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
+              {item.checks.map(check => (
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-sm text-ink">{check}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href={`https://wa.me/6282212339885?text=Halo%20MIRO%2C%20saya%20mau%20pesan%20${encodeURIComponent(item.name)}`}
+              class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)] hover:scale-[1.02]">
+              Pesan {item.name}
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

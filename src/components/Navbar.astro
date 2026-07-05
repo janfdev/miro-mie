@@ -1,7 +1,7 @@
 ---
 const navItems = [
   { label: 'Beranda', href: '#' },
-  { label: 'Tentang', href: '#tentang' },
+  { label: 'Tentang', href: '#cerita' },
   { label: 'Produk', href: '#menu' },
   { label: 'Layanan', href: '#layanan' },
   { label: 'Testimoni', href: '#testimoni' },
@@ -9,65 +9,42 @@ const navItems = [
 ];
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
       <a href="#" class="flex items-center gap-2">
-        <span class="bg-[#F2711C] text-white text-xs font-bold px-3 py-1 rounded-full">miro</span>
-        <span class="text-[#241C15] font-bold text-lg tracking-tight">Mie Yamin & Ayam</span>
+        <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">miro</span>
+        <span class="text-ink font-bold text-lg tracking-tight hidden sm:block">Mie Yamin & Ayam</span>
       </a>
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex items-center gap-8">
         {navItems.map((item) => (
-          <a
-            href={item.href}
-            class="text-sm font-medium text-[#6B6157] hover:text-[#F2711C] transition-colors"
-          >
+          <a href={item.href} class="text-sm font-medium text-ink-body hover:text-primary transition-colors">
             {item.label}
           </a>
         ))}
       </div>
 
       <!-- CTA -->
-      <a
-        href="https://wa.me/6281234567890"
-        class="hidden sm:inline-flex items-center gap-2 bg-[#F2711C] hover:bg-[#E0621A] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
-      >
+      <a href="https://wa.me/6282212339885" class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)]">
         Pesan Sekarang
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
 
-      <!-- Mobile Menu Button -->
-      <button
-        id="mobile-menu-btn"
-        class="lg:hidden p-2 text-[#241C15]"
-        aria-label="Toggle menu"
-      >
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+      <!-- Mobile -->
+      <button id="mobile-btn" class="lg:hidden p-2 text-ink" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden pb-4">
       <div class="flex flex-col gap-3">
         {navItems.map((item) => (
-          <a
-            href={item.href}
-            class="text-sm font-medium text-[#6B6157] hover:text-[#F2711C] transition-colors py-2"
-          >
-            {item.label}
-          </a>
+          <a href={item.href} class="text-sm font-medium text-ink-body hover:text-primary py-2">{item.label}</a>
         ))}
-        <a
-          href="https://wa.me/6281234567890"
-          class="inline-flex items-center justify-center gap-2 bg-[#F2711C] text-white text-sm font-semibold px-5 py-2.5 rounded-full mt-2"
-        >
+        <a href="https://wa.me/6282212339885" class="inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full mt-2">
           Pesan Sekarang
         </a>
       </div>
@@ -76,7 +53,16 @@ const navItems = [
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
+  const btn = document.getElementById('mobile-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar?.classList.add('shadow-sm');
+    } else {
+      navbar?.classList.remove('shadow-sm');
+    }
+  });
 </script>
