@@ -42,10 +42,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Fonts: Playfair Display (headings) + Inter (body) -->
+  <!-- Fonts: Plus Jakarta Sans (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Schema.org Restaurant -->
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -76,7 +76,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     }
   })} />
 </head>
-<body class="bg-stone-50 text-stone-900 min-h-screen">
+<body class="bg-[#FFF8F0] text-[#241C15] min-h-screen font-['Inter',sans-serif]">
   <slot />
 
   <script>

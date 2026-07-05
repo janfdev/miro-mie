@@ -1,0 +1,39 @@
+---
+const photos = [
+  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&q=80', alt: 'Mie Yamin MIRO' },
+  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80', alt: 'Dapur MIRO' },
+  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&q=80', alt: 'Mie Ayam MIRO' },
+  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&q=80', alt: 'Bakso MIRO' },
+  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=400&q=80', alt: 'Es Teler MIRO' },
+  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=400&q=80', alt: 'Suasana Kedai MIRO' },
+];
+---
+
+<section class="bg-[#FFF8F0] py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#F2711C] mb-4 block">Galeri</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C15] mb-4">
+        Suasana di MIRO
+      </h2>
+      <p class="text-[#6B6157] max-w-lg mx-auto">
+        Lihat langsung keseruan makan di MIRO — dari dapur sampai meja makan.
+      </p>
+    </div>
+
+    <!-- Photo Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {photos.map((photo, i) => (
+        <div class={`overflow-hidden rounded-2xl ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
+          <img
+            src={photo.src}
+            alt={photo.alt}
+            class={`w-full object-cover hover:scale-105 transition-transform duration-500 ${i === 0 ? 'h-64 md:h-full' : 'h-48 md:h-56'}`}
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

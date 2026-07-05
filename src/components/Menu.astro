@@ -1,0 +1,101 @@
+---
+import { menuItems } from '../data/site';
+
+const categories = [...new Set(menuItems.map(item => item.category))];
+---
+
+<section id="menu" class="bg-[#FFF8F0] py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#F2711C] mb-4 block">Menu Unggulan</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C15] mb-4">
+        Pilihan Favorit Pelanggan
+      </h2>
+      <p class="text-[#6B6157] max-w-lg mx-auto">
+        Cicipi menu andalan kami yang sudah menjadi favorit ribuan pelanggan setia MIRO.
+      </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex justify-center gap-3 mb-10 flex-wrap">
+      <button class="category-btn active px-5 py-2 rounded-full text-sm font-semibold transition-colors" data-category="all">
+        Semua
+      </button>
+      {categories.map(cat => (
+        <button class="category-btn px-5 py-2 rounded-full text-sm font-semibold transition-colors" data-category={cat}>
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Menu Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {menuItems.map(item => (
+        <div class="menu-card bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group" data-category={item.category}>
+          <div class="relative overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.name}
+              class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            {item.badge && (
+              <span class="absolute top-3 left-3 bg-[#F2711C] text-white text-xs font-bold px-3 py-1 rounded-full">
+                {item.badge}
+              </span>
+            )}
+          </div>
+          <div class="p-5">
+            <span class="text-xs text-[#F2711C] font-semibold">{item.category}</span>
+            <h3 class="text-lg font-bold text-[#241C15] mt-1 mb-2">{item.name}</h3>
+            <p class="text-sm text-[#6B6157] leading-relaxed mb-4 line-clamp-2">{item.description}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-lg font-bold text-[#F2711C]">{item.price}</span>
+              <a
+                href={`https://wa.me/6281234567890?text=Halo%20MIRO%2C%20saya%20mau%20pesan%20${encodeURIComponent(item.name)}`}
+                class="w-10 h-10 bg-[#F2711C] hover:bg-[#E0621A] text-white rounded-full flex items-center justify-center transition-colors"
+                aria-label={`Pesan ${item.name}`}
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .category-btn {
+    color: #6B6157;
+    background: transparent;
+    border: 1.5px solid #e5e0db;
+  }
+  .category-btn:hover,
+  .category-btn.active {
+    color: white;
+    background: #F2711C;
+    border-color: #F2711C;
+  }
+</style>
+
+<script>
+  const btns = document.querySelectorAll('.category-btn');
+  const cards = document.querySelectorAll('.menu-card');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-category');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        (card as HTMLElement).style.display = (cat === 'all' || cardCat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>
