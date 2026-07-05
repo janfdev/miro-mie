@@ -6,6 +6,7 @@ const photos = [
   { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80', alt: 'Bakso MIRO' },
   { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80', alt: 'Suasana kedai' },
   { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80', alt: 'Es Teler MIRO' },
+  { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80', alt: 'Pelanggan MIRO' },
 ];
 ---
 
@@ -17,7 +18,7 @@ const photos = [
       </h2>
     </div>
 
-    <!-- Bento Grid — 6 items, dense, no empty cells -->
+    <!-- Bento Grid — 7 items, 4x3=12 cells, dense, no gaps -->
     <div class="bento-grid">
       {photos.map((p, i) => (
         <div class={`bento-item bento-${i + 1}`}>
@@ -70,32 +71,49 @@ const photos = [
     opacity: 1;
   }
 
-  /* Desktop: 4x3 grid with mixed sizes */
-  .bento-1 { grid-column: span 2; grid-row: span 2; }
-  .bento-2 { grid-column: span 1; grid-row: span 1; }
-  .bento-3 { grid-column: span 1; grid-row: span 1; }
-  .bento-4 { grid-column: span 1; grid-row: span 1; }
-  .bento-5 { grid-column: span 2; grid-row: span 1; }
-  .bento-6 { grid-column: span 1; grid-row: span 1; }
+  /*
+   * 7 items, 4x3 = 12 cells
+   * Layout:
+   * ┌───────────┬──────┬──────┐
+   * │           │  2   │  3   │
+   * │    1      ├──────┼──────┤
+   * │  (2x2)    │  4   │  5   │
+   * ├───────────┴──────┼──────┤
+   * │       6 (2x1)    │      │
+   * ├──────────────────┤  7   │
+   * │       8 (2x1)    │(2x2) │
+   * └──────────────────┴──────┘
+   */
+
+  .bento-1 { grid-column: span 2; grid-row: span 2; } /* 4 cells */
+  .bento-2 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
+  .bento-3 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
+  .bento-4 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
+  .bento-5 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
+  .bento-6 { grid-column: span 2; grid-row: span 1; } /* 2 cells */
+  .bento-7 { grid-column: span 2; grid-row: span 1; } /* 2 cells */
+  /* Total: 4+1+1+1+1+2+2 = 12 cells ✅ */
 
   /* Tablet: 2 columns */
   @media (max-width: 1023px) {
     .bento-grid {
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 200px 180px 180px 180px;
+      grid-template-rows: 200px 180px 180px 180px 180px;
     }
     .bento-1 { grid-column: span 2; grid-row: span 1; }
-    .bento-5 { grid-column: span 2; grid-row: span 1; }
+    .bento-6 { grid-column: span 2; grid-row: span 1; }
+    .bento-7 { grid-column: span 2; grid-row: span 1; }
   }
 
   /* Mobile: 2 columns compact */
   @media (max-width: 639px) {
     .bento-grid {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px repeat(3, 160px);
+      grid-template-rows: 180px repeat(4, 160px);
       gap: 8px;
     }
     .bento-1 { grid-column: span 2; grid-row: span 1; }
-    .bento-5 { grid-column: span 2; grid-row: span 1; }
+    .bento-6 { grid-column: span 2; grid-row: span 1; }
+    .bento-7 { grid-column: span 2; grid-row: span 1; }
   }
 </style>
