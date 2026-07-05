@@ -1,13 +1,11 @@
 ---
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', alt: 'Suasana dapur MIRO', type: 'image' },
-  { src: '', alt: 'Mie Yamin MIRO', type: 'gradient' },
-  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80', alt: 'Mie Yamin MIRO', type: 'image' },
-  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80', alt: 'Mie Ayam MIRO', type: 'image' },
-  { src: '', alt: 'Bakso MIRO', type: 'pattern' },
-  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80', alt: 'Bakso MIRO', type: 'image' },
-  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80', alt: 'Suasana kedai', type: 'image' },
-  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80', alt: 'Es Teler MIRO', type: 'image' },
+  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', alt: 'Suasana dapur MIRO' },
+  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80', alt: 'Mie Yamin MIRO' },
+  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80', alt: 'Mie Ayam MIRO' },
+  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80', alt: 'Bakso MIRO' },
+  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80', alt: 'Suasana kedai' },
+  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80', alt: 'Es Teler MIRO' },
 ];
 ---
 
@@ -19,36 +17,14 @@ const photos = [
       </h2>
     </div>
 
-    <!-- Bento Grid — 8 items, dense, no empty cells -->
+    <!-- Bento Grid — 6 items, dense, no empty cells -->
     <div class="bento-grid">
       {photos.map((p, i) => (
         <div class={`bento-item bento-${i + 1}`}>
-          {p.type === 'image' && (
-            <img src={p.src} alt={p.alt} class="w-full h-full object-cover" loading={i < 3 ? 'eager' : 'lazy'} />
-          )}
-          {p.type === 'gradient' && (
-            <div class="w-full h-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center p-6">
-              <div class="text-center text-white">
-                <p class="text-2xl font-extrabold" style="font-family: var(--font-heading)">Mie Yamin</p>
-                <p class="text-sm opacity-80 mt-1">Menu Andalan</p>
-              </div>
-            </div>
-          )}
-          {p.type === 'pattern' && (
-            <div class="w-full h-full bg-cream-soft flex items-center justify-center p-6 relative overflow-hidden">
-              <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, var(--color-ink) 1px, transparent 0); background-size: 20px 20px;"></div>
-              <div class="text-center relative z-10">
-                <p class="text-2xl font-extrabold text-ink" style="font-family: var(--font-heading)">Bakso</p>
-                <p class="text-sm text-ink-body mt-1">Favorit Keluarga</p>
-              </div>
-            </div>
-          )}
-          <!-- Hover overlay (image cells only) -->
-          {p.type === 'image' && (
-            <div class="bento-overlay">
-              <span class="text-white text-sm font-semibold">{p.alt}</span>
-            </div>
-          )}
+          <img src={p.src} alt={p.alt} class="w-full h-full object-cover" loading={i < 2 ? 'eager' : 'lazy'} />
+          <div class="bento-overlay">
+            <span class="text-white text-sm font-semibold">{p.alt}</span>
+          </div>
         </div>
       ))}
     </div>
@@ -94,38 +70,32 @@ const photos = [
     opacity: 1;
   }
 
-  /* Row 1: large (2x2) + 2 small */
+  /* Desktop: 4x3 grid with mixed sizes */
   .bento-1 { grid-column: span 2; grid-row: span 2; }
   .bento-2 { grid-column: span 1; grid-row: span 1; }
   .bento-3 { grid-column: span 1; grid-row: span 1; }
-
-  /* Row 2: 1 small + large (2x1) */
   .bento-4 { grid-column: span 1; grid-row: span 1; }
-
-  /* Row 3: 2 medium + 2 small */
-  .bento-5 { grid-column: span 1; grid-row: span 1; }
+  .bento-5 { grid-column: span 2; grid-row: span 1; }
   .bento-6 { grid-column: span 1; grid-row: span 1; }
-  .bento-7 { grid-column: span 2; grid-row: span 1; }
-  .bento-8 { grid-column: span 1; grid-row: span 1; }
 
-  /* Tablet */
+  /* Tablet: 2 columns */
   @media (max-width: 1023px) {
     .bento-grid {
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 200px 180px 180px 180px 180px;
+      grid-template-rows: 200px 180px 180px 180px;
     }
     .bento-1 { grid-column: span 2; grid-row: span 1; }
-    .bento-7 { grid-column: span 2; grid-row: span 1; }
+    .bento-5 { grid-column: span 2; grid-row: span 1; }
   }
 
-  /* Mobile */
+  /* Mobile: 2 columns compact */
   @media (max-width: 639px) {
     .bento-grid {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px repeat(4, 160px);
+      grid-template-rows: 180px repeat(3, 160px);
       gap: 8px;
     }
     .bento-1 { grid-column: span 2; grid-row: span 1; }
-    .bento-7 { grid-column: span 2; grid-row: span 1; }
+    .bento-5 { grid-column: span 2; grid-row: span 1; }
   }
 </style>
