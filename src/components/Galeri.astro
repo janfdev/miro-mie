@@ -1,27 +1,54 @@
 ---
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80', alt: 'Suasana dapur MIRO' },
-  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&q=80', alt: 'Mie Yamin MIRO' },
-  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=500&q=80', alt: 'Mie Ayam MIRO' },
-  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=500&q=80', alt: 'Bakso MIRO' },
-  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=700&q=80', alt: 'Suasana kedai' },
-  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=500&q=80', alt: 'Es Teler MIRO' },
+  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', alt: 'Suasana dapur MIRO', type: 'image' },
+  { src: '', alt: 'Mie Yamin MIRO', type: 'gradient' },
+  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80', alt: 'Mie Yamin MIRO', type: 'image' },
+  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80', alt: 'Mie Ayam MIRO', type: 'image' },
+  { src: '', alt: 'Bakso MIRO', type: 'pattern' },
+  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80', alt: 'Bakso MIRO', type: 'image' },
+  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80', alt: 'Suasana kedai', type: 'image' },
+  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80', alt: 'Es Teler MIRO', type: 'image' },
 ];
 ---
 
-<section class="bg-white py-20 lg:py-28">
+<section class="bg-white py-24 lg:py-32">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">Galeri</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-ink" style="font-family: var(--font-heading)">Galeri MIRO</h2>
-      <p class="text-ink-body mt-3">Momen kebersamaan dan hidangan terbaik kami.</p>
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink leading-tight" style="font-family: var(--font-heading)">
+        Momen di <span class="text-primary">MIRO</span>
+      </h2>
     </div>
 
-    <!-- Bento Grid -->
+    <!-- Bento Grid — 8 items, dense, no empty cells -->
     <div class="bento-grid">
       {photos.map((p, i) => (
         <div class={`bento-item bento-${i + 1}`}>
-          <img src={p.src} alt={p.alt} class="w-full h-full object-cover" loading="lazy" />
+          {p.type === 'image' && (
+            <img src={p.src} alt={p.alt} class="w-full h-full object-cover" loading={i < 3 ? 'eager' : 'lazy'} />
+          )}
+          {p.type === 'gradient' && (
+            <div class="w-full h-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center p-6">
+              <div class="text-center text-white">
+                <p class="text-2xl font-extrabold" style="font-family: var(--font-heading)">Mie Yamin</p>
+                <p class="text-sm opacity-80 mt-1">Menu Andalan</p>
+              </div>
+            </div>
+          )}
+          {p.type === 'pattern' && (
+            <div class="w-full h-full bg-cream-soft flex items-center justify-center p-6 relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, var(--color-ink) 1px, transparent 0); background-size: 20px 20px;"></div>
+              <div class="text-center relative z-10">
+                <p class="text-2xl font-extrabold text-ink" style="font-family: var(--font-heading)">Bakso</p>
+                <p class="text-sm text-ink-body mt-1">Favorit Keluarga</p>
+              </div>
+            </div>
+          )}
+          <!-- Hover overlay (image cells only) -->
+          {p.type === 'image' && (
+            <div class="bento-overlay">
+              <span class="text-white text-sm font-semibold">{p.alt}</span>
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -31,89 +58,74 @@ const photos = [
 <style>
   .bento-grid {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 180px);
-  }
-
-  @media (min-width: 768px) {
-    .bento-grid {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 200px);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .bento-grid {
-      grid-template-rows: repeat(3, 220px);
-    }
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    grid-auto-flow: dense;
+    gap: 10px;
   }
 
   .bento-item {
+    position: relative;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 16px;
     cursor: pointer;
   }
 
   .bento-item img {
-    transition: transform 0.7s ease;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .bento-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.08);
   }
 
-  /* Item 1: top-left large (2x2) */
-  .bento-1 {
-    grid-column: span 2;
-    grid-row: span 2;
+  .bento-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(36, 28, 21, 0.55), transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
 
-  /* Item 2: top-right small */
-  .bento-2 {
-    grid-column: span 1;
-    grid-row: span 1;
+  .bento-item:hover .bento-overlay {
+    opacity: 1;
   }
 
-  /* Item 3: mid-right small */
-  .bento-3 {
-    grid-column: span 1;
-    grid-row: span 1;
+  /* Row 1: large (2x2) + 2 small */
+  .bento-1 { grid-column: span 2; grid-row: span 2; }
+  .bento-2 { grid-column: span 1; grid-row: span 1; }
+  .bento-3 { grid-column: span 1; grid-row: span 1; }
+
+  /* Row 2: 1 small + large (2x1) */
+  .bento-4 { grid-column: span 1; grid-row: span 1; }
+
+  /* Row 3: 2 medium + 2 small */
+  .bento-5 { grid-column: span 1; grid-row: span 1; }
+  .bento-6 { grid-column: span 1; grid-row: span 1; }
+  .bento-7 { grid-column: span 2; grid-row: span 1; }
+  .bento-8 { grid-column: span 1; grid-row: span 1; }
+
+  /* Tablet */
+  @media (max-width: 1023px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 200px 180px 180px 180px 180px;
+    }
+    .bento-1 { grid-column: span 2; grid-row: span 1; }
+    .bento-7 { grid-column: span 2; grid-row: span 1; }
   }
 
-  /* Item 4: bottom-left small */
-  .bento-4 {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  /* Item 5: bottom-center large (2x1) */
-  .bento-5 {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-
-  /* Item 6: bottom-right small */
-  .bento-6 {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  /* Mobile: all single column, stack vertically */
-  @media (max-width: 767px) {
+  /* Mobile */
+  @media (max-width: 639px) {
     .bento-grid {
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 200px 180px 180px 180px;
+      grid-template-rows: 180px repeat(4, 160px);
+      gap: 8px;
     }
-
-    .bento-1 {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
-
-    .bento-5 {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
+    .bento-1 { grid-column: span 2; grid-row: span 1; }
+    .bento-7 { grid-column: span 2; grid-row: span 1; }
   }
 </style>
