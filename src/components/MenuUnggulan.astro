@@ -1,4 +1,6 @@
 ---
+import Icon from './Icons.astro';
+
 const menuItems = [
   {
     num: '01',
@@ -92,9 +94,7 @@ const menuItems = [
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
               {item.checks.map(check => (
                 <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
+                  <Icon name="Check" class="text-primary flex-shrink-0" size={20} />
                   <span class="text-sm text-ink">{check}</span>
                 </div>
               ))}
@@ -103,7 +103,7 @@ const menuItems = [
             <a href={`https://wa.me/6282212339885?text=Halo%20MIRO%2C%20saya%20mau%20pesan%20${encodeURIComponent(item.name)}`}
               class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)] hover:scale-[1.02]">
               Pesan {item.name}
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              <Icon name="ArrowRight" class="w-4 h-4" size={16} />
             </a>
           </div>
         </div>

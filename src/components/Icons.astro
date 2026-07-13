@@ -1,15 +1,87 @@
 ---
-// Lucide SVG icons as Astro components
-// Usage: import { IconPhone } from './Icons.astro';
+import type { SVGAttributes } from "astro/types";
+
+import {
+    Check,
+    Tag,
+    Leaf,
+    Smile,
+    Phone,
+    MapPin,
+    Clock,
+    Home,
+    Gift,
+    Menu,
+    X,
+    ChevronRight,
+    Star,
+    Send,
+    Truck,
+    ArrowRight,
+    Play,
+    Plus,
+    CircleCheck,
+    Sparkles,
+    ChefHat,
+    Truck,
+} from "lucide";
 
 interface Props {
-  class?: string;
-  size?: number;
+    name: string;
+    class?: string;
+    size?: number;
+    strokeWidth?: number;
 }
 
-const { class: className = '', size = 24 } = Astro.props;
+const { name, class: className = "", size = 24, strokeWidth = 2 } = Astro.props;
+
+const icons: Record<string, any[][]> = {
+    Check,
+    Tag,
+    Leaf,
+    Smile,
+    Phone,
+    MapPin,
+    Clock,
+    Home,
+    Gift,
+    Menu,
+    X,
+    ChevronRight,
+    Star,
+    Send,
+    Truck,
+    ArrowRight,
+    Play,
+    Plus,
+    CircleCheck,
+    Sparkles,
+    ChefHat,
+    Truck,
+};
+
+const elements = icons[name] ?? [];
 ---
 
-<!-- Re-export individual icons -->
-<!-- We use inline SVG from Lucide (https://lucide.dev) -->
-<!-- All icons are 24x24 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" -->
+{
+    elements.length > 0 && (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={size}
+            height={size}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width={strokeWidth}
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class={className}
+        >
+            {elements.map((el: any) => {
+                const [tag, attrs] = el;
+                const Tag = tag as keyof SVGAttributes;
+                return <Tag {...attrs} />;
+            })}
+        </svg>
+    )
+}

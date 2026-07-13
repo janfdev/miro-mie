@@ -1,5 +1,6 @@
 ---
 import { menuItems } from '../data/site';
+import Icon from './Icons.astro';
 
 const categories = [...new Set(menuItems.map(item => item.category))];
 ---
@@ -57,9 +58,7 @@ const categories = [...new Set(menuItems.map(item => item.category))];
                 class="w-10 h-10 bg-[#F2711C] hover:bg-[#E0621A] text-white rounded-full flex items-center justify-center transition-colors"
                 aria-label={`Pesan ${item.name}`}
               >
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
+                <Icon name="Plus" class="w-5 h-5" size={20} />
               </a>
             </div>
           </div>

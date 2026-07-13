@@ -1,33 +1,77 @@
 ---
+import Icon from "./Icons.astro";
+
 const features = [
-  { icon: 'clock', title: 'Rasa Konsisten', desc: 'Setiap sajian dijaga kualitasnya agar cita rasa selalu sama.' },
-  { icon: 'tag', title: 'Harga Terjangkau', desc: 'Harga bersahabat untuk semua kalangan tanpa mengorbankan kualitas.' },
-  { icon: 'leaf', title: 'Bahan Segar Setiap Hari', desc: 'Bahan pilihan diproses segar setiap hari untuk menjaga kesehatan.' },
-  { icon: 'smile', title: 'Pelayanan Cepat & Ramah', desc: 'Siap melayani pelanggan dengan senyum dan kecepatan prima.' },
+    {
+        icon: "CircleCheck",
+        title: "Rasa Konsisten",
+        desc: "Setiap sajian dijaga kualitasnya agar cita rasa selalu sama.",
+    },
+    {
+        icon: "Sparkles",
+        title: "Harga Terjangkau",
+        desc: "Harga bersahabat untuk semua kalangan tanpa mengorbankan kualitas.",
+    },
+    {
+        icon: "ChefHat",
+        title: "Bahan Segar Setiap Hari",
+        desc: "Bahan pilihan diproses segar setiap hari untuk menjaga kesehatan.",
+    },
+    {
+        icon: "Truck",
+        title: "Pelayanan Cepat & Ramah",
+        desc: "Siap melayani pelanggan dengan senyum dan kecepatan prima.",
+    },
 ];
 ---
 
 <section class="bg-white py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-ink" style="font-family: var(--font-heading)">
-        Kenapa Memilih <span class="text-primary">MIRO</span>?
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-      {features.map(f => (
-        <div class="text-center group">
-          <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary transition-colors">
-            {f.icon === 'clock' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-            {f.icon === 'tag' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>}
-            {f.icon === 'leaf' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>}
-            {f.icon === 'smile' && <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
-          </div>
-          <h3 class="text-base font-bold text-ink mb-2">{f.title}</h3>
-          <p class="text-sm text-ink-body">{f.desc}</p>
+    <div
+        class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center gap-3"
+    >
+        <div>
+            <h2 class="font-bold uppercase text-primary">Keunggulan Kami</h2>
         </div>
-      ))}
+        <div class="text-center mb-14">
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold text-ink"
+                style="font-family: var(--font-heading)"
+            >
+                Kenapa Memilih <span class="text-primary">MIRO</span>?
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+                features.map((f) => (
+                    // <!-- <div class="text-center group bg-primary/30 ">
+                    //     <div class="w-14 h-14 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary transition-colors">
+                    //         <Icon
+                    //             name={f.icon}
+                    //             class="text-primary group-hover:text-white transition-colors"
+                    //             size={24}
+                    //         />
+                    //     </div>
+                    //     <p class="text-sm text-ink-body">{f.desc}</p>
+                    // </div> -->
+                    <div class="group bg-primary/10 rounded-3xl py-10 px-8 flex flex-col gap-3">
+                        <div class="flex w-fit">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center mx-auto bg-primary transition-colors">
+                                <Icon
+                                    name={f.icon}
+                                    class="text-white transition-colors"
+                                    size={20}
+                                />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-start gap-3">
+                            <h3 class="font-bold">{f.title}</h3>
+                            <p class="text-gray-500">{f.desc}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     </div>
-  </div>
 </section>
