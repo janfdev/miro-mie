@@ -1,31 +1,56 @@
 ---
-import Icon from './Icons.astro';
+import Icon from "./Icons.astro";
 
 const services = [
-  { icon: 'Home', title: 'Sewa Tempat', desc: 'Tersedia untuk arisan, acara keluarga, dan kumpul bersama teman.' },
-  { icon: 'Gift', title: 'Menerima Undangan', desc: 'Melayani pesanan untuk katering acara kecil hingga skala besar.' },
-  { icon: 'Truck', title: 'Delivery', desc: 'Pesan makanan langsung diantar ke lokasi kamu dengan cepat.' },
+    {
+        icon: "Home",
+        title: "Sewa Tempat",
+        desc: "Tersedia untuk arisan, gathering, dan acara keluarga. Tempat nyaman dan kapasitas memadai",
+    },
+    {
+        icon: "Gift",
+        title: "Menerima Undangan",
+        desc: "Melayani pesanan untuk berbagai acara dan catering. Kami siap hadir di acara spesial anda",
+    },
+    {
+        icon: "Truck",
+        title: "Delivery",
+        desc: "Pesan makanan langsung dari rumah dengan layanan antar cepat ke seluruh wilayah.",
+    },
 ];
 ---
 
 <section id="layanan" class="py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="bg-gradient-to-br from-gradient-from to-gradient-to rounded-[40px] p-10 lg:p-16">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white text-center mb-10" style="font-family: var(--font-heading)">
-        Layanan MIRO
-      </h2>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div
+            class="bg-linear-to-br from-primary/90 to-primary rounded-[40px] p-10 lg:p-16"
+        >
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold text-white text-center mb-10"
+                style="font-family: var(--font-heading)"
+            >
+                Layanan MIRO
+            </h2>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        {services.map(s => (
-          <div class="bg-white/15 backdrop-blur-sm rounded-[20px] p-6 text-center text-white border border-white/20">
-          <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Icon name={s.icon} class="text-white" size={24} />
-          </div>
-            <h3 class="text-lg font-bold mb-2">{s.title}</h3>
-            <p class="text-sm text-white/80">{s.desc}</p>
-          </div>
-        ))}
-      </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                {
+                    services.map((s) => (
+                        <div class="bg-white rounded-[20px] p-6 text-center text-white border border-white/20">
+                            <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Icon
+                                    name={s.icon}
+                                    class="text-white"
+                                    size={24}
+                                />
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-black/90">
+                                {s.title}
+                            </h3>
+                            <p class="text-sm text-gray-600/80">{s.desc}</p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
     </div>
-  </div>
 </section>

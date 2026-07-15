@@ -1,5 +1,5 @@
 ---
-import Icon from './Icons.astro';
+import Icon from "./Icons.astro";
 
 type NavItem = {
     label: string;
@@ -18,13 +18,17 @@ const navItems: NavItem[] = [
 
 <header
     id="navbar"
-    class="fixed mt-5 rounded-full m-20 top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300"
+    class="fixed mt-5 rounded-full shadow-sm m-20 top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300"
 >
     <nav class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 lg:h-20">
             <!-- Logo -->
             <div>
-                <img src="/images/Logo-miro.png" alt="Miro Mie Logo" class="h-10 w-auto" />
+                <img
+                    src="/images/Logo-miro.png"
+                    alt="Miro Mie Logo"
+                    class="h-10 w-auto"
+                />
             </div>
 
             <!-- Desktop Menu -->
@@ -41,22 +45,22 @@ const navItems: NavItem[] = [
                 }
             </div>
 
-                <a
-                    href="https://wa.me/6282212339885"
-                    class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)]"
-                >
-                    Pesan Sekarang
-                    <Icon name="ArrowRight" class="w-4 h-4" size={16} />
-                </a>
+            <a
+                href="https://wa.me/6282212339885"
+                class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)]"
+            >
+                Pesan Sekarang
+                <Icon name="ArrowRight" class="w-4 h-4" size={16} />
+            </a>
 
-                <!-- Mobile -->
-                <button
-                    id="mobile-btn"
-                    class="lg:hidden p-2 text-ink"
-                    aria-label="Menu"
-                >
-                    <Icon name="Menu" class="w-6 h-6" size={24} />
-                </button>
+            <!-- Mobile -->
+            <button
+                id="mobile-btn"
+                class="lg:hidden p-2 text-ink"
+                aria-label="Menu"
+            >
+                <Icon name="Menu" class="w-6 h-6" size={24} />
+            </button>
         </div>
 
         <div id="mobile-menu" class="hidden lg:hidden pb-4">
