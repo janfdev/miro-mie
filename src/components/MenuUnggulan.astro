@@ -8,8 +8,7 @@ const menuItems = [
     name: 'Mie Yamin',
     desc: 'Mie kenyal dengan bumbu yamin khas, dipadukan ayam cincang gurih, sawi segar, dan taburan bawang renyah. Disajikan bersama kuah hangat berisi pangsit dan bakso untuk melengkapi setiap suapan.',
     checks: ['Mie Homemade', 'Ayam Cincang Melimpah', 'Kuah Pangsit dan Bakso'],
-    price: 'Mulai Rp 15.000',
-    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80',
+    image: '/images/mie-yamin.png',
     side: 'left',
   },
   {
@@ -18,8 +17,7 @@ const menuItems = [
     name: 'Mie Ayam',
     desc: 'Nikmati kelezatan mie ayam khas dengan potongan ayam berbumbu yang empuk dan kaya rasa. Dipadukan mie kenyal serta sayuran segar untuk menciptakan hidangan yang memuaskan setiap kali disantap.',
     checks: ['Bumbu Khas Rumahan', 'Ayam Kecap Empuk', 'Sayuran Segar'],
-    price: 'Rp 10.000',
-    image: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80',
+    image: '/images/mie-ayam-produk.png',
     side: 'right',
   },
   {
@@ -28,8 +26,7 @@ const menuItems = [
     name: 'Bakso Spesial',
     desc: 'Semangkuk bakso hangat dengan tekstur yang kenyal dan kuah kaldu yang gurih meresap. Disajikan dengan pelengkap pilihan untuk menghadirkan cita rasa yang selalu dirindukan.',
     checks: ['Bakso Pilihan', 'Kuah Gurih Hangat', 'Rasa Autentik'],
-    price: 'Rp 10.000',
-    image: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80',
+    image: '/images/bakso-spesial.png',
     side: 'left',
   },
   {
@@ -38,8 +35,7 @@ const menuItems = [
     name: 'Es Teler',
     desc: 'Perpaduan alpukat lembut, kelapa muda, nangka, dan sirup santan gula merah yang menyegarkan. Penutup sempurna setelah menyantap semangkuk mie.',
     checks: ['Alpukat Segar', 'Kelapa Muda', 'Santan Gula Merah'],
-    price: 'Rp 10.000',
-    image: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80',
+    image: '/images/es-teler.png',
     side: 'right',
   },
 ];
@@ -63,9 +59,9 @@ const menuItems = [
     <!-- Menu Items -->
     <div class="space-y-16 lg:space-y-24">
       {menuItems.map(item => (
-        <div class={`grid lg:grid-cols-2 gap-10 items-center ${item.side === 'right' ? 'lg:direction-rtl' : ''}`}>
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
           <!-- Image -->
-          <div class={`relative ${item.side === 'right' ? 'lg:order-2 lg:direction-ltr' : 'lg:direction-ltr'}`}>
+          <div class={`relative ${item.side === 'right' ? 'lg:order-2' : ''}`}>
             <div class="rounded-[28px] overflow-hidden">
               <img
                 src={item.image}
@@ -75,13 +71,13 @@ const menuItems = [
               />
             </div>
             <!-- Price badge -->
-            <div class="absolute bottom-4 left-4 bg-white/95 rounded-full px-4 py-1.5 text-sm font-bold text-ink shadow-[0_10px_30px_-10px_rgba(36,28,21,0.12)]">
+            <!-- <div class="absolute bottom-4 left-4 bg-white/95 rounded-full px-4 py-1.5 text-sm font-bold text-ink shadow-[0_10px_30px_-10px_rgba(36,28,21,0.12)]">
               {item.price}
-            </div>
+            </div> -->
           </div>
 
           <!-- Text -->
-          <div class={item.side === 'right' ? 'lg:order-1 lg:direction-ltr' : 'lg:direction-ltr'}>
+          <div class={item.side === 'right' ? 'lg:order-1' : ''}>
               <div class="flex mb-3 items-center justify-center gap-2 bg-white rounded-full px-4 py-1.5 text-sm font-bold text-ink shadow-[0_10px_30px_-10px_rgba(36,28,21,0.12)] w-fit">
                   <span class="text-black text-xs">{item.num}</span>
                   <span class="text-xs font-bold text-primary uppercase tracking-wider">

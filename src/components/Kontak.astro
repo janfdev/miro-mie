@@ -19,12 +19,12 @@ import Icon from "./Icons.astro";
 
         <div class="grid lg:grid-cols-2 gap-8 items-stretch">
             <!-- Map -->
-            <div class="rounded-[28px] overflow-hidden min-h-100">
+            <div class="rounded-[28px] overflow-hidden min-h-[300px] lg:min-h-[400px]">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.0!2d108.0!3d-6.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDAnMDAuMCJTIDEwOMKwMDAnMDAuMCJF!5e0!3m2!1sid!2sid!4v1"
                     width="100%"
                     height="100%"
-                    style="border:0; min-height: 400px;"
+                    style="border:0"
                     allowfullscreen
                     loading="lazy"
                     title="Lokasi MIRO"></iframe>
@@ -67,18 +67,17 @@ import Icon from "./Icons.astro";
                             class="backdrop-blur-2xl bg-white/20 p-3 rounded-2xl"
                         >
                             <Icon
-                                name="MapPin"
+                                name="Clock"
                                 class="shrink mt-0.5 text-white"
                                 size={20}
                             />
                         </div>
                         <div class="flex flex-col gap-2">
                             <h4 class="uppercase text-white/80 text-xs">
-                                Alamat
+                                Jam Buka
                             </h4>
                             <p class="text-sm text-white/90">
-                                Jl. Fasyahillah No.45, Wolubawuc, Kec. Bantar,
-                                Kabupaten Cirebon (Depan Kampus 2 UMC)
+                                Setiap Hari, 09:00 — 21:00 WIB
                             </p>
                         </div>
                     </div>
@@ -87,18 +86,17 @@ import Icon from "./Icons.astro";
                             class="backdrop-blur-2xl bg-white/20 p-3 rounded-2xl"
                         >
                             <Icon
-                                name="MapPin"
+                                name="Phone"
                                 class="shrink mt-0.5 text-white"
                                 size={20}
                             />
                         </div>
                         <div class="flex flex-col gap-2">
                             <h4 class="uppercase text-white/80 text-xs">
-                                Alamat
+                                Telepon
                             </h4>
                             <p class="text-sm text-white/90">
-                                Jl. Fasyahillah No.45, Wolubawuc, Kec. Bantar,
-                                Kabupaten Cirebon (Depan Kampus 2 UMC)
+                                +62 822 1233 9885
                             </p>
                         </div>
                     </div>
@@ -109,7 +107,7 @@ import Icon from "./Icons.astro";
                         href="https://wa.me/6282212339885"
                         class="mt-auto flex items-center justify-center gap-5 bg-white text-primary font-bold text-center py-3.5 rounded-full hover:bg-cream transition-colors"
                     >
-                        <img src="/public/whatsapp-icon.svg" class="w-7 h-7" />
+                        <img src="/whatsapp-icon.svg" class="w-7 h-7" />
                         <span class="">Pesan via WhatsApp Sekarang</span>
                     </a>
                     <a
@@ -117,7 +115,7 @@ import Icon from "./Icons.astro";
                         class="mt-auto flex items-center justify-center gap-10 bg-white text-primary font-bold text-center py-3.5 rounded-full hover:bg-cream transition-colors"
                     >
                         <img
-                            src="/public/tiktok-icon-light.svg"
+                            src="/tiktok-icon-light.svg"
                             class="w-7 h-7"
                         />
                         <span class="">Pesan via TikTok Sekarang</span>
