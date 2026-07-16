@@ -48,8 +48,10 @@ const menuItems = [
 <section id="menu" class="bg-cream-soft py-20 lg:py-28">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-center mb-16">
-      <span class="text-xs font-bold uppercase tracking-widest text-primary mb-4 block">Menu Unggulan</span>
+    <div class="flex flex-col items-center justify-center text-center mb-16 gap-4">
+        <div class="rounded-full w-fit py-1 px-4 bg-primary/10">
+            <span class="text-xs font-bold uppercase text-primary mb-4 ">Menu Unggulan</span>
+        </div>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-ink mb-4" style="font-family: var(--font-heading)">
         Setiap Sajian, <span class="text-primary">Sebuah Cerita</span>
       </h2>
@@ -68,7 +70,7 @@ const menuItems = [
               <img
                 src={item.image}
                 alt={item.name}
-                class="w-full aspect-[4/3] object-cover"
+                class="w-full aspect-4/3 object-cover"
                 loading="lazy"
               />
             </div>
@@ -80,9 +82,12 @@ const menuItems = [
 
           <!-- Text -->
           <div class={item.side === 'right' ? 'lg:order-1 lg:direction-ltr' : 'lg:direction-ltr'}>
-            <span class="text-xs font-bold text-primary uppercase tracking-wider mb-3 block">
-              {item.tag}
-            </span>
+              <div class="flex mb-3 items-center justify-center gap-2 bg-white rounded-full px-4 py-1.5 text-sm font-bold text-ink shadow-[0_10px_30px_-10px_rgba(36,28,21,0.12)] w-fit">
+                  <span class="text-black text-xs">{item.num}</span>
+                  <span class="text-xs font-bold text-primary uppercase tracking-wider">
+                  {item.tag}
+                </span>
+              </div>
             <h3 class="text-2xl lg:text-3xl font-extrabold text-ink mb-4" style="font-family: var(--font-heading)">
               {item.name}
             </h3>
@@ -93,8 +98,8 @@ const menuItems = [
             <!-- Checklist -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
               {item.checks.map(check => (
-                <div class="flex items-center gap-2">
-                  <Icon name="Check" class="text-primary flex-shrink-0" size={20} />
+                <div class="flex items-center justify-center gap-2 bg-white rounded-full w-fit py-2 px-4">
+                  <Icon name="Check" class="text-green-500 shrink" size={20} />
                   <span class="text-sm text-ink">{check}</span>
                 </div>
               ))}
