@@ -18,26 +18,26 @@ const navItems: NavItem[] = [
 
 <header
     id="navbar"
-    class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300 mt-2 mx-2 rounded-full shadow-sm lg:mt-5 lg:mx-20"
+    class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 mt-2 mx-2 rounded-3xl shadow-sm lg:mt-5 lg:mx-20"
 >
-    <nav class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 lg:h-20">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-14 lg:h-20">
             <!-- Logo -->
-            <div>
+            <a href="#" class="shrink">
                 <img
                     src="/images/Logo-miro.png"
                     alt="Miro Mie Logo"
-                    class="h-10 w-auto"
+                    class="h-8 sm:h-15 w-auto"
                 />
-            </div>
+            </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center gap-8">
+            <div class="hidden lg:flex items-center gap-6 xl:gap-8">
                 {
                     navItems.map((item) => (
                         <a
                             href={item.href}
-                            class="text-sm font-medium text-ink-body hover:text-primary border-b-0 hover:border-b-2 hover:border-b-primary transition-colors"
+                            class="text-sm font-medium text-ink-body hover:text-primary transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full"
                         >
                             {item.label}
                         </a>
@@ -45,31 +45,46 @@ const navItems: NavItem[] = [
                 }
             </div>
 
-            <a
-                href="https://wa.me/6282212339885"
-                class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)]"
-            >
-                Pesan Sekarang
-                <Icon name="ArrowRight" class="w-4 h-4" size={16} />
-            </a>
+            <!-- Right: CTA + Hamburger grouped -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a
+                    href="https://wa.me/6282212339885"
+                    class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-full transition-all hover:shadow-[0_8px_20px_-6px_rgba(242,113,28,0.45)] whitespace-nowrap"
+                >
+                    Pesan Sekarang
+                    <Icon name="ArrowRight" class="w-4 h-4" size={16} />
+                </a>
 
-            <!-- Mobile -->
-            <button
-                id="mobile-btn"
-                class="lg:hidden p-2 text-ink"
-                aria-label="Menu"
-            >
-                <Icon name="Menu" class="w-6 h-6" size={24} />
-            </button>
+                <button
+                    id="mobile-btn"
+                    class="lg:hidden p-2 text-ink hover:text-primary transition-colors"
+                    aria-label="Toggle menu"
+                    aria-expanded="false"
+                >
+                    <Icon
+                        name="Menu"
+                        id="icon-menu"
+                        class="w-6 h-6"
+                        size={24}
+                    />
+                    <Icon
+                        name="X"
+                        id="icon-x"
+                        class="w-6 h-6 hidden"
+                        size={24}
+                    />
+                </button>
+            </div>
         </div>
 
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden pb-4">
-            <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-1">
                 {
                     navItems.map((item) => (
                         <a
                             href={item.href}
-                            class="text-sm font-medium text-ink-body hover:text-primary py-2"
+                            class="mobile-link text-sm font-medium text-ink-body hover:text-primary py-2.5 px-3 rounded-lg hover:bg-cream-soft transition-colors"
                         >
                             {item.label}
                         </a>
@@ -77,7 +92,7 @@ const navItems: NavItem[] = [
                 }
                 <a
                     href="https://wa.me/6282212339885"
-                    class="inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full mt-2"
+                    class="sm:hidden inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full mt-2"
                 >
                     Pesan Sekarang
                 </a>
@@ -89,14 +104,35 @@ const navItems: NavItem[] = [
 <script>
     const btn = document.getElementById("mobile-btn");
     const menu = document.getElementById("mobile-menu");
-    btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
-
     const navbar = document.getElementById("navbar");
+    const iconMenu = document.getElementById("icon-menu");
+    const iconX = document.getElementById("icon-x");
+
+    function toggleMenu(open: boolean) {
+        menu?.classList.toggle("hidden", !open);
+        iconMenu?.classList.toggle("hidden", open);
+        iconX?.classList.toggle("hidden", !open);
+        btn?.setAttribute("aria-expanded", String(open));
+    }
+
+    btn?.addEventListener("click", () => {
+        const isOpen = !menu?.classList.contains("hidden");
+        toggleMenu(!isOpen);
+    });
+
+    document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => toggleMenu(false));
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 1024) toggleMenu(false);
+    });
+
     window.addEventListener("scroll", () => {
         if (window.scrollY > 20) {
-            navbar?.classList.add("shadow-sm");
+            navbar?.classList.add("shadow-md");
         } else {
-            navbar?.classList.remove("shadow-sm");
+            navbar?.classList.remove("shadow-md");
         }
     });
 </script>

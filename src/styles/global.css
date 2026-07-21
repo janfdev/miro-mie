@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════
-   MIRO MIE — Design System v3
-   Warm, homey, street food premium
-   ═══════════════════════════════════════════════ */
-
 @theme {
   /* Primary */
   --color-primary: #F2711C;
@@ -38,7 +33,7 @@
 /* ─── Base ─── */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6.5rem;
 }
 
 body {

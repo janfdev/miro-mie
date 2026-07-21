@@ -1,119 +1,257 @@
 ---
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', alt: 'Suasana dapur MIRO' },
-  { src: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80', alt: 'Mie Yamin MIRO' },
-  { src: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80', alt: 'Mie Ayam MIRO' },
-  { src: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=600&q=80', alt: 'Bakso MIRO' },
-  { src: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&q=80', alt: 'Suasana kedai' },
-  { src: 'https://images.unsplash.com/photo-1626804475297-41608ea09aeb?w=600&q=80', alt: 'Es Teler MIRO' },
-  { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80', alt: 'Pelanggan MIRO' },
+    {
+        src: "/public/images/grid-1.jpg",
+        alt: "Foto Kedai MIRO",
+    },
+    {
+        src: "/public/images/grid-6.png",
+        alt: "Owner MIRO",
+    },
+    {
+        src: "/public/images/grid-2.png",
+        alt: "Kedai MIRO",
+    },
+    {
+        src: "/public/images/grid-4.png",
+        alt: "Suasana kedai",
+    },
+    {
+        src: "/public/images/grid-5.png",
+        alt: "Kedai MIRO",
+    },
+    {
+        src: "/public/images/grid-3.png",
+        alt: "Mie Ayam MIRO, Mie Yamin MIRO",
+    },
+    {
+        src: "/public/images/grid-7.png",
+        alt: "Pelanggan MIRO",
+    },
 ];
 ---
 
 <section class="bg-white py-24 lg:py-32">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink leading-tight" style="font-family: var(--font-heading)">
-        Momen di <span class="text-primary">MIRO</span>
-      </h2>
-    </div>
-
-    <!-- Bento Grid — 7 items, 4x3=12 cells, dense, no gaps -->
-    <div class="bento-grid">
-      {photos.map((p, i) => (
-        <div class={`bento-item bento-${i + 1}`}>
-          <img src={p.src} alt={p.alt} class="w-full h-full object-cover" loading={i < 2 ? 'eager' : 'lazy'} />
-          <div class="bento-overlay">
-            <span class="text-white text-sm font-semibold">{p.alt}</span>
-          </div>
+    <div
+        class="max-w-7xl flex flex-col items-center justify-center gap-3 mx-auto px-6 lg:px-8"
+    >
+        <div class="rounded-full w-fit py-0.5 px-4 bg-primary/10">
+            <span class="text-xs font-bold uppercase text-primary mb-4"
+                >Galeri</span
+            >
         </div>
-      ))}
+        <div class="text-center mb-16">
+            <h2
+                class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink leading-tight"
+                style="font-family: var(--font-heading)"
+            >
+                Galeri <span class="text-primary">MIRO</span>
+            </h2>
+        </div>
+
+        <!-- Bento Grid — 7 items -->
+        <div class="parent w-full">
+            <div class="div1">
+                <img src={photos[0].src} alt={photos[0].alt} loading="eager" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[0].alt}</span
+                    >
+                </div>
+            </div>
+            <div class="div2">
+                <img src={photos[1].src} alt={photos[1].alt} loading="eager" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[1].alt}</span
+                    >
+                </div>
+            </div>
+            <div class="div3">
+                <img src={photos[2].src} alt={photos[2].alt} loading="lazy" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[2].alt}</span
+                    >
+                </div>
+            </div>
+            <div class="div4">
+                <img src={photos[3].src} alt={photos[3].alt} loading="lazy" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[3].alt}</span
+                    >
+                </div>
+            </div>
+            <div class="div5">
+                <img src={photos[4].src} alt={photos[4].alt} loading="lazy" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[4].alt}</span
+                    >
+                </div>
+            </div>
+            <div class="div6">
+                <img src={photos[5].src} alt={photos[5].alt} loading="lazy" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[5].alt}</span
+                    >
+                </div>
+            </div>
+            <div class="div7">
+                <img src={photos[6].src} alt={photos[6].alt} loading="lazy" />
+                <div class="bento-overlay">
+                    <span class="text-white text-sm font-semibold"
+                        >{photos[6].alt}</span
+                    >
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <style>
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 200px);
-    grid-auto-flow: dense;
-    gap: 10px;
-  }
-
-  .bento-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    cursor: pointer;
-  }
-
-  .bento-item img {
-    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .bento-item:hover img {
-    transform: scale(1.08);
-  }
-
-  .bento-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(36, 28, 21, 0.55), transparent 50%);
-    display: flex;
-    align-items: flex-end;
-    padding: 1.25rem;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .bento-item:hover .bento-overlay {
-    opacity: 1;
-  }
-
-  /*
-   * 7 items, 4x3 = 12 cells
-   * Layout:
-   * ┌───────────┬──────┬──────┐
-   * │           │  2   │  3   │
-   * │    1      ├──────┼──────┤
-   * │  (2x2)    │  4   │  5   │
-   * ├───────────┴──────┼──────┤
-   * │       6 (2x1)    │      │
-   * ├──────────────────┤  7   │
-   * │       8 (2x1)    │(2x2) │
-   * └──────────────────┴──────┘
-   */
-
-  .bento-1 { grid-column: span 2; grid-row: span 2; } /* 4 cells */
-  .bento-2 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
-  .bento-3 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
-  .bento-4 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
-  .bento-5 { grid-column: span 1; grid-row: span 1; } /* 1 cell */
-  .bento-6 { grid-column: span 2; grid-row: span 1; } /* 2 cells */
-  .bento-7 { grid-column: span 2; grid-row: span 1; } /* 2 cells */
-  /* Total: 4+1+1+1+1+2+2 = 12 cells ✅ */
-
-  /* Tablet: 2 columns */
-  @media (max-width: 1023px) {
-    .bento-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 200px 180px 180px 180px 180px;
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 200px 200px 200px;
+        gap: 8px;
     }
-    .bento-1 { grid-column: span 2; grid-row: span 1; }
-    .bento-6 { grid-column: span 2; grid-row: span 1; }
-    .bento-7 { grid-column: span 2; grid-row: span 1; }
-  }
 
-  /* Mobile: 2 columns compact */
-  @media (max-width: 639px) {
-    .bento-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px repeat(4, 160px);
-      gap: 8px;
+    .parent > div {
+        position: relative;
+        overflow: hidden;
+        border-radius: 1rem;
+        cursor: pointer;
     }
-    .bento-1 { grid-column: span 2; grid-row: span 1; }
-    .bento-6 { grid-column: span 2; grid-row: span 1; }
-    .bento-7 { grid-column: span 2; grid-row: span 1; }
-  }
+
+    .div1 {
+        grid-column: 1;
+        grid-row: 1 / 3;
+    }
+    .div2 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .div3 {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .div4 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .div5 {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    .div6 {
+        grid-column: 3;
+        grid-row: 1;
+    }
+    .div7 {
+        grid-column: 3;
+        grid-row: 2 / 4;
+    }
+
+    .parent img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .parent > div:hover img {
+        transform: scale(1.08);
+    }
+
+    .bento-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(36, 28, 21, 0.55),
+            transparent 50%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 1.25rem;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .parent > div:hover .bento-overlay {
+        opacity: 1;
+    }
+
+    @media (max-width: 1023px) {
+        .parent {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 200px 200px 200px 200px;
+        }
+        .div1 {
+            grid-column: span 2;
+            grid-row: 1;
+        }
+        .div2 {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .div3 {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .div4 {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .div5 {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        .div6 {
+            grid-column: 1;
+            grid-row: 4;
+        }
+        .div7 {
+            grid-column: 2;
+            grid-row: 4;
+        }
+    }
+
+    @media (max-width: 639px) {
+        .parent {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 160px 140px 140px 140px;
+        }
+        .div1 {
+            grid-column: span 2;
+            grid-row: 1;
+        }
+        .div2 {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .div3 {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .div4 {
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .div5 {
+            grid-column: 2;
+            grid-row: 3;
+        }
+        .div6 {
+            grid-column: 1;
+            grid-row: 4;
+        }
+        .div7 {
+            grid-column: 2;
+            grid-row: 4;
+        }
+    }
 </style>
