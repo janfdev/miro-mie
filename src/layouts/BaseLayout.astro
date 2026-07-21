@@ -1,97 +1,155 @@
 ---
-import { siteConfig } from '../data/site';
-import '../styles/global.css';
+import { siteConfig } from "../data/site";
+import "../styles/global.css";
 
 interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
+    title?: string;
+    description?: string;
+    ogImage?: string;
 }
 
 const {
-  title = `${siteConfig.name} — ${siteConfig.tagline}`,
-  description = siteConfig.description,
-  ogImage = '/og-image.jpg',
+    title = `${siteConfig.name} — ${siteConfig.tagline}`,
+    description = siteConfig.description,
+    ogImage = "/og-image.jpg",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content={Astro.generator} />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content={Astro.generator} />
 
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={canonicalURL} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={new URL(ogImage, Astro.site)} />
-  <meta property="og:url" content={canonicalURL} />
-  <meta property="og:site_name" content={siteConfig.name} />
-  <meta property="og:locale" content="id_ID" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:site_name" content={siteConfig.name} />
+        <meta property="og:locale" content="id_ID" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-  <!-- Fonts: Plus Jakarta Sans (headings) + Inter (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+        <!-- Fonts: Plus Jakarta Sans (headings) + Inter (body) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
 
-  <!-- Schema.org Restaurant -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": siteConfig.name,
-    "description": description,
-    "url": Astro.site?.toString(),
-    "telephone": `+${siteConfig.whatsapp}`,
-    "address": { "@type": "PostalAddress", "streetAddress": siteConfig.address, "addressCountry": "ID" },
-    "servesCuisine": ["Indonesian", "Noodles", "Meatballs"],
-    "priceRange": "Rp",
-    "openingHours": "Mo-Su 09:00-21:00",
-    "hasMenu": {
-      "@type": "Menu",
-      "hasMenuSection": [
-        { "@type": "MenuSection", "name": "Mie", "hasMenuItem": [
-          { "@type": "MenuItem", "name": "Mie Yamin", "offers": { "@type": "Offer", "price": "18000", "priceCurrency": "IDR" } },
-          { "@type": "MenuItem", "name": "Mie Ayam", "offers": { "@type": "Offer", "price": "16000", "priceCurrency": "IDR" } }
-        ]},
-        { "@type": "MenuSection", "name": "Baso", "hasMenuItem": [
-          { "@type": "MenuItem", "name": "Baso", "offers": { "@type": "Offer", "price": "20000", "priceCurrency": "IDR" } }
-        ]},
-        { "@type": "MenuSection", "name": "Minuman", "hasMenuItem": [
-          { "@type": "MenuItem", "name": "Es Teler", "offers": { "@type": "Offer", "price": "15000", "priceCurrency": "IDR" } }
-        ]}
-      ]
-    }
-  })} />
-</head>
-<body class="bg-[#FFF8F0] text-[#241C15] min-h-screen font-['Inter',sans-serif]">
-  <slot />
+        <!-- Schema.org Restaurant -->
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Restaurant",
+                name: siteConfig.name,
+                description: description,
+                url: Astro.site?.toString(),
+                telephone: `+${siteConfig.whatsapp}`,
+                address: {
+                    "@type": "PostalAddress",
+                    streetAddress: siteConfig.address,
+                    addressCountry: "ID",
+                },
+                servesCuisine: ["Indonesian", "Noodles", "Meatballs"],
+                priceRange: "Rp",
+                openingHours: "Mo-Su 09:00-21:00",
+                hasMenu: {
+                    "@type": "Menu",
+                    hasMenuSection: [
+                        {
+                            "@type": "MenuSection",
+                            name: "Mie",
+                            hasMenuItem: [
+                                {
+                                    "@type": "MenuItem",
+                                    name: "Mie Yamin",
+                                    offers: {
+                                        "@type": "Offer",
+                                        price: "18000",
+                                        priceCurrency: "IDR",
+                                    },
+                                },
+                                {
+                                    "@type": "MenuItem",
+                                    name: "Mie Ayam",
+                                    offers: {
+                                        "@type": "Offer",
+                                        price: "16000",
+                                        priceCurrency: "IDR",
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            "@type": "MenuSection",
+                            name: "Baso",
+                            hasMenuItem: [
+                                {
+                                    "@type": "MenuItem",
+                                    name: "Baso",
+                                    offers: {
+                                        "@type": "Offer",
+                                        price: "20000",
+                                        priceCurrency: "IDR",
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            "@type": "MenuSection",
+                            name: "Minuman",
+                            hasMenuItem: [
+                                {
+                                    "@type": "MenuItem",
+                                    name: "Es Teler",
+                                    offers: {
+                                        "@type": "Offer",
+                                        price: "15000",
+                                        priceCurrency: "IDR",
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                },
+            })}
+        />
+    </head>
+    <body
+        class="bg-[#FFF8F0] text-[#241C15] min-h-screen font-['Inter',sans-serif]"
+    >
+        <slot />
 
-  <script>
-    // Scroll reveal observer
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
-  </script>
-</body>
+        <script>
+            // Scroll reveal observer
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                },
+                { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+            );
+            document
+                .querySelectorAll(".animate-on-scroll")
+                .forEach((el) => observer.observe(el));
+        </script>
+    </body>
 </html>
